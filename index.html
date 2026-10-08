@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── TOP BAR ── -->
+  <header class="top-bar">
+    <span class="app-title">📋 Life Dashboard</span>
+    <div class="top-bar-controls">
+      <button id="themeToggle" class="btn-icon" title="Toggle Light/Dark mode">🌙</button>
+    </div>
+  </header>
+
+  <!-- ── MAIN WRAPPER ── -->
+  <main class="dashboard">
+
+    <!-- ── 1. GREETING CARD ── -->
+    <section class="card card-greeting" id="greetingCard">
+      <p id="clock" class="clock">00:00:00</p>
+      <p id="dateDisplay" class="date-display"></p>
+      <h1 id="greeting" class="greeting"></h1>
+
+      <!-- Custom name setting -->
+      <div class="name-setting" id="nameSettingWrapper">
+        <span id="nameDisplay" class="name-display"></span>
+        <button id="editNameBtn" class="btn-link">✏️ Set name</button>
+      </div>
+      <div id="nameForm" class="name-form hidden">
+        <input type="text" id="nameInput" class="input-field" placeholder="Enter your name" maxlength="30" />
+        <button id="saveNameBtn" class="btn-primary btn-sm">Save</button>
+        <button id="cancelNameBtn" class="btn-secondary btn-sm">Cancel</button>
+      </div>
+    </section>
+
+    <!-- ── 2. FOCUS TIMER CARD ── -->
+    <section class="card card-timer">
+      <h2 class="card-title">Focus Timer</h2>
+
+      <div id="timerDisplay" class="timer-display">25:00</div>
+
+      <div class="timer-controls">
+        <button id="startBtn" class="btn-primary">Start</button>
+        <button id="stopBtn" class="btn-secondary">Stop</button>
+        <button id="resetBtn" class="btn-secondary">Reset</button>
+      </div>
+
+      <!-- Custom pomodoro duration -->
+      <div class="timer-setting">
+        <label for="pomoDuration">Duration (min):</label>
+        <input type="number" id="pomoDuration" class="input-field input-small"
+               min="1" max="120" value="25" />
+        <button id="setDurationBtn" class="btn-primary btn-sm">Set</button>
+      </div>
+    </section>
+
+    <!-- ── 3. TO-DO LIST CARD ── -->
+    <section class="card card-todo">
+      <div class="card-header-row">
+        <h2 class="card-title">Tasks</h2>
+        <select id="sortSelect" class="input-field input-small">
+          <option value="default">Default order</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+          <option value="done">Done last</option>
+        </select>
+      </div>
+
+      <div class="todo-input-row">
+        <input type="text" id="taskInput" class="input-field" placeholder="Add a new task…" />
+        <button id="addTaskBtn" class="btn-primary">Add</button>
+      </div>
+
+      <p id="duplicateMsg" class="error-msg hidden">⚠ Task already exists!</p>
+
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+
+    <!-- ── 4. QUICK LINKS CARD ── -->
+    <section class="card card-links">
+      <h2 class="card-title">Quick Links</h2>
+
+      <div class="links-input-row">
+        <input type="text" id="linkName" class="input-field" placeholder="Link name" />
+        <input type="url" id="linkUrl" class="input-field" placeholder="https://…" />
+        <button id="addLinkBtn" class="btn-primary">Add Link</button>
+      </div>
+
+      <p id="linkError" class="error-msg hidden"></p>
+
+      <div id="linksList" class="links-list"></div>
+    </section>
+
+  </main>
+
+  <!-- ── EDIT TASK MODAL ── -->
+  <div id="editModal" class="modal-overlay hidden">
+    <div class="modal">
+      <h3>Edit Task</h3>
+      <input type="text" id="editInput" class="input-field" />
+      <div class="modal-buttons">
+        <button id="saveEditBtn" class="btn-primary">Save</button>
+        <button id="cancelEditBtn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
